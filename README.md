@@ -14,12 +14,12 @@ You must create a webhook before using library. See details: https://support.dis
 
 ## About discord_webhook
 
-Send a message using Discord Webhook
+A lightweight fastlane plugin to send a message using Discord Webhook
 
 ## Parameters
 
 | Key | Description |
-| :--: | :--: |
+| --- | --- |
 | `webhook_url` | Discord Webhook URL. |
 | `username` | [Optional] Username. It will override webhook's username if specified. |
 | `message`  | The message you want to send. |
