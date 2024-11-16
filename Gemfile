@@ -7,10 +7,10 @@ gem 'fastlane', '>= 2.225.0'
 # A simple task automation tool.
 gem 'rake'
 # Behavior-driven testing tool for Ruby.
-gem 'rspec'
+gem 'rspec', '~> 3.13.0'
 # Formatter for RSpec to generate JUnit compatible reports.
 gem 'rspec_junit_formatter'
 
-gem 'webmock'
+gem 'webmock', '~> 3.24.0'
 
 gemspec
