@@ -1,0 +1,16 @@
+lane :test do
+  discord_webhook(
+    webhook_url: ENV['WEBHOOK_URL'],
+    username: 'kota',
+    message: 'hello',
+    attachment_file_path: './sample.png',
+    embed_payload: {
+      title: 'hello',
+      description: 'description',
+      url: 'https://github.com/mataku',
+      thumbnail: {
+        url: 'https://github.com/mataku.png'
+      }
+    }
+  )
+end
