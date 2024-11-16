@@ -10,11 +10,13 @@ This project is a [_fastlane_](https://github.com/fastlane/fastlane) plugin. To 
 fastlane add_plugin discord_webhook
 ```
 
+You must create a webhook before using library. See details: https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks.
+
 ## About discord_webhook
 
 Send a message using Discord Webhook
 
-## Usage
+## Parameters
 
 | Key | Description |
 | :--: | :--: |
@@ -27,15 +29,19 @@ Send a message using Discord Webhook
 ## Example
 
 ```ruby
+# Send a simple message
 lane :discord_message do
   discord_webhook(
     webhook_url: 'https://yourDiscordWebhookUrl',
-    message: 'hello'
+    message: 'hello',
+    # You can override username by specifying it if needed.
+    # username: 'mataku'
   )
 end
 ```
 
 ```ruby
+# Send a message with a file
 lane :discord_message_with_file do
   discord_webhook(
     webhook_url: 'https://yourDiscordWebhookUrl',
@@ -48,6 +54,7 @@ end
 ```
 
 ```ruby
+# Send a message with embed content
 lane :discord_message_with_embed do
   discord_webhook(
     webhook_url: 'https://yourDiscordWebhookUrl',
