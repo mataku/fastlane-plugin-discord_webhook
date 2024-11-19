@@ -27,7 +27,7 @@ module Fastlane
             embed_payload: embed_payload
           )
           handle_response(response)
-        rescue StandardError => e
+        rescue Socket::ResolutionError, Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError => e
           UI.user_error!(e.message)
         end
       end
