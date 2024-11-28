@@ -106,10 +106,16 @@ module Fastlane
         if response.kind_of?(Net::HTTPSuccess)
           UI.success('Successfully sent a message to Discord')
         else
+          body = response.body
           error_body = begin
-            JSON.parse(response.body)['message']
-          rescue StandardError
-            ''
+            parsed = JSON.parse(body)['message']
+            if parsed.nil?
+              body
+            else
+              parsed
+            end
+          rescue StandardError => e
+            body
           end
           UI.user_error!("Failed to send a message to Discord: #{error_body}")
         end

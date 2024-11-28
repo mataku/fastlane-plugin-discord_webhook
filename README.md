@@ -71,6 +71,36 @@ lane :discord_message_with_embed do
 end
 ```
 
+### Mention
+
+You can mention by using **User ID** or **Role ID**, not display name.
+
+```ruby
+lane :user_mention do
+  discord_webhook(
+    # ...
+    # Specify User ID, like <@USER_ID>
+    message: 'Hi, <@12340987651234567>'
+  )
+end
+
+lane :role_mention do
+  discord_webhook(
+    # ...
+    # Specify Role ID with &, like <@&ROLE_ID>
+    message: 'Hi, <@&123456798765123456>'
+  )
+end
+```
+
+User ID reference | Role ID reference
+:--: | :--:
+![](./misc/user_id.png) | ![](./misc/role_id.png)
+
+- - -
+
+See details: https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID#h_01HRSTXPS5H5D7JBY2QKKPVKNA.
+
 ## Issues and Feedback
 
 For any other issues and feedback about this plugin, please submit it to this repository.

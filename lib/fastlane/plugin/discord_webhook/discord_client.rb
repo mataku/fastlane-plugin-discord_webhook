@@ -40,9 +40,22 @@ module Fastlane
                                   [embed_payload]
                                 end
         payload_json = if !username.nil? && !username.empty?
-                         { username: username, content: content, embeds: embed_payload_content }
+                         {
+                           username: username,
+                           content: content,
+                           embeds: embed_payload_content,
+                           allowed_mentions: {
+                             parse: ['users', 'roles'],
+                           }
+                         }
                        else
-                         { content: content, embeds: embed_payload_content }
+                         {
+                           content: content, 
+                           embeds: embed_payload_content,
+                           allowed_mentions: {
+                             parse: ['users', 'roles'],
+                           }
+                         }
                        end
         request.set_form(
           [
@@ -81,7 +94,10 @@ module Fastlane
 
         body = {
           content: content,
-          embeds: embed_payload_content
+          embeds: embed_payload_content,
+          allowed_mentions: {
+            parse: ['users', 'roles'],
+          }
         }
         body[:username] = username if !username.nil? && !username.empty?
         request.body = body.to_json
