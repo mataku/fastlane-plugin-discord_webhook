@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.author        = 'Takuma Homma'
   spec.email         = 'nagomimatcha@gmail.com'
 
-  spec.summary       = 'A fastlane plugin to send a message via Discord Webhook'
+  spec.summary       = 'A lightweight fastlane plugin to send a message via Discord Webhook'
   spec.homepage      = "https://github.com/mataku/fastlane-plugin-discord_webhook"
   spec.license       = "MIT"
 
