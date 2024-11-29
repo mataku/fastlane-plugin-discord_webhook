@@ -114,7 +114,7 @@ module Fastlane
             else
               parsed
             end
-          rescue StandardError => e
+          rescue JSON::ParserError
             body
           end
           UI.user_error!("Failed to send a message to Discord: #{error_body}")

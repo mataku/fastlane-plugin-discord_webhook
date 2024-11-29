@@ -49,7 +49,7 @@ describe Fastlane::Actions::DiscordWebhookAction do
       end
     end
 
-    context 'request failure unexpected error message' do
+    context 'request failure unexpected JSON error message' do
       let(:body) { '{"hoge": "way"}' }
       let(:failure_response) { instance_double(Net::HTTPBadRequest, body: body) }
       let(:mock_client) { instance_double('discord_client') }
@@ -65,5 +65,23 @@ describe Fastlane::Actions::DiscordWebhookAction do
         expect(Fastlane::UI).to have_received(:user_error!).with("Failed to send a message to Discord: #{body}")
       end
     end
+
+    context 'request failure unexpected non-JSON error message' do
+      let(:body) { 'hello' }
+      let(:failure_response) { instance_double(Net::HTTPBadRequest, body: body) }
+      let(:mock_client) { instance_double('discord_client') }
+      before do
+        allow(failure_response).to receive(:kind_of?).with(Net::HTTPSuccess).and_return(false)
+        allow(mock_client).to receive(:send_message).and_return(failure_response)
+        allow(client).to receive(:new).and_return(mock_client)
+        allow(Fastlane::UI).to receive(:user_error!)
+      end
+
+      it 'should display failure message' do
+        expect { action.run(params) }.not_to raise_error
+        expect(Fastlane::UI).to have_received(:user_error!).with("Failed to send a message to Discord: #{body}")
+      end
+    end
+
   end
 end
