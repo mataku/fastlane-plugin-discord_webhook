@@ -12,8 +12,10 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'https://github.com/mataku/fastlane-plugin-discord_webhook'
   spec.license       = 'MIT'
 
-  spec.files         = Dir['lib/**/*'] + %w(README.md LICENSE)
+  spec.files         = Dir.chdir(__dir__) { `git ls-files -z -- lib README.md LICENSE`.split("\x0") }
   spec.require_paths = ['lib']
   spec.metadata['rubygems_mfa_required'] = 'true'
+  spec.metadata['source_code_uri'] = spec.homepage
+  spec.metadata['changelog_uri'] = "#{spec.homepage}/blob/v#{spec.version}/CHANGELOG.md"
   spec.required_ruby_version = '>= 3.2' # consider the versions supported by fastlane as much as possible
 end
