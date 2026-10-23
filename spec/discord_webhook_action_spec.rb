@@ -96,6 +96,5 @@ describe Fastlane::Actions::DiscordWebhookAction do
         expect(Fastlane::UI).to have_received(:user_error!).with('getaddrinfo: nodename nor servname provided, or not known')
       end
     end
-
   end
 end

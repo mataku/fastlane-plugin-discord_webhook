@@ -33,11 +33,11 @@ module Fastlane
       end
 
       def self.description
-        "Send a message using Discord Webhook"
+        'Send a message using Discord Webhook'
       end
 
       def self.authors
-        ["Takuma Homma"]
+        ['Takuma Homma']
       end
 
       def self.return_value
@@ -45,15 +45,15 @@ module Fastlane
       end
 
       def self.details
-        "Send a message using Discord Webhook"
+        'Send a message using Discord Webhook'
       end
 
       def self.available_options
         [
           FastlaneCore::ConfigItem.new(
             key: :webhook_url,
-            env_name: "FL_DISCORD_WEBHOOK_URL",
-            description: "Discord Webhook URL",
+            env_name: 'FL_DISCORD_WEBHOOK_URL',
+            description: 'Discord Webhook URL',
             optional: false,
             type: String,
             verify_block: proc do |value|
@@ -62,22 +62,22 @@ module Fastlane
           ),
           FastlaneCore::ConfigItem.new(
             key: :message,
-            env_name: "FL_DISCORD_WEBHOOK_MESSAGE",
-            description: "The message you want to send",
+            env_name: 'FL_DISCORD_WEBHOOK_MESSAGE',
+            description: 'The message you want to send',
             optional: true,
             type: String
           ),
           FastlaneCore::ConfigItem.new(
             key: :username,
-            env_name: "FL_DISCORD_WEBHOOK_USERNAME",
-            description: "[Optional] Username",
+            env_name: 'FL_DISCORD_WEBHOOK_USERNAME',
+            description: '[Optional] Username',
             optional: true,
             type: String
           ),
           FastlaneCore::ConfigItem.new(
             key: :attachment_file_path,
-            env_name: "FL_DISCORD_WEBHOOK_ATTACHMENT_FILE_PATH",
-            description: "[Optional] File path to upload",
+            env_name: 'FL_DISCORD_WEBHOOK_ATTACHMENT_FILE_PATH',
+            description: '[Optional] File path to upload',
             optional: true,
             type: String,
             verify_block: proc do |value|
@@ -89,8 +89,8 @@ module Fastlane
           # See: https://discord.com/developers/docs/resources/message#embed-object
           FastlaneCore::ConfigItem.new(
             key: :embed_payload,
-            env_name: "FL_DISCORD_WEBHOOK_EMBED_PAYLOAD",
-            description: "[Optional] Embed Object. You can specify one object. See details: https://discord.com/developers/docs/resources/message#embed-object",
+            env_name: 'FL_DISCORD_WEBHOOK_EMBED_PAYLOAD',
+            description: '[Optional] Embed Object. You can specify one object. See details: https://discord.com/developers/docs/resources/message#embed-object',
             optional: true,
             type: Hash
           )

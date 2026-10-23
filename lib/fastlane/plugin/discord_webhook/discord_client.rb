@@ -35,28 +35,28 @@ module Fastlane
         uri = URI.parse(@webhook_url)
         request = Net::HTTP::Post.new(uri)
         embed_payload_content = if embed_payload.nil? || embed_payload.empty?
-                                  []
-                                else
-                                  [embed_payload]
-                                end
+          []
+        else
+          [embed_payload]
+        end
         payload_json = if !username.nil? && !username.empty?
-                         {
-                           username: username,
-                           content: content,
-                           embeds: embed_payload_content,
-                           allowed_mentions: {
-                             parse: ['users', 'roles'],
-                           }
-                         }
-                       else
-                         {
-                           content: content, 
-                           embeds: embed_payload_content,
-                           allowed_mentions: {
-                             parse: ['users', 'roles'],
-                           }
-                         }
-                       end
+          {
+            username: username,
+            content: content,
+            embeds: embed_payload_content,
+            allowed_mentions: {
+              parse: ['users', 'roles'],
+            }
+          }
+        else
+          {
+            content: content,
+            embeds: embed_payload_content,
+            allowed_mentions: {
+              parse: ['users', 'roles'],
+            }
+          }
+        end
         request.set_form(
           [
             [
@@ -87,10 +87,10 @@ module Fastlane
         request = Net::HTTP::Post.new(uri)
         request.content_type = 'application/json'
         embed_payload_content = if embed_payload.nil? || embed_payload.empty?
-                                  []
-                                else
-                                  [embed_payload]
-                                end
+          []
+        else
+          [embed_payload]
+        end
 
         body = {
           content: content,
