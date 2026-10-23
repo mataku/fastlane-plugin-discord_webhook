@@ -83,5 +83,19 @@ describe Fastlane::Actions::DiscordWebhookAction do
       end
     end
 
+    context 'name resolution failure' do
+      let(:mock_client) { instance_double('discord_client') }
+      before do
+        allow(mock_client).to receive(:send_message).and_raise(SocketError, 'getaddrinfo: nodename nor servname provided, or not known')
+        allow(client).to receive(:new).and_return(mock_client)
+        allow(Fastlane::UI).to receive(:user_error!)
+      end
+
+      it 'should display failure message' do
+        expect { action.run(params) }.not_to raise_error
+        expect(Fastlane::UI).to have_received(:user_error!).with('getaddrinfo: nodename nor servname provided, or not known')
+      end
+    end
+
   end
 end
