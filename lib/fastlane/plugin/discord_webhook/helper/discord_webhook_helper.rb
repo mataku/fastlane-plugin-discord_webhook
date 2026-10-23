@@ -14,10 +14,10 @@ module Fastlane
         uri = URI.parse(webhook_url)
         request = Net::HTTP::Post.new(uri)
         payload_json = if !username.nil? && !username.empty?
-                         { username: username, content: content }
-                       else
-                         { content: content }
-                       end
+          { username: username, content: content }
+        else
+          { content: content }
+        end
         request.set_form(
           [
             [

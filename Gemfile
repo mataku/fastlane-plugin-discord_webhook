@@ -10,6 +10,7 @@ gem 'rake'
 gem 'rspec', '~> 3.13.0'
 # Formatter for RSpec to generate JUnit compatible reports.
 gem 'rspec_junit_formatter'
+gem 'rubocop', '~> 1.92', require: false
 
 gem 'webmock', '~> 3.24.0'
 
