@@ -21,3 +21,12 @@ jobs:
         bundler-cache: true
     - name: Run tests
       run: bundle exec rake
+
+  test-result:
+    runs-on: ubuntu-latest
+    name: Test result
+    needs: test
+    if: always()
+    steps:
+    - name: Check results
+      run: test "${{ needs.test.result }}" = "success"
